@@ -1,7 +1,6 @@
 import os
 import json
 import pickle
-import numpy as np
 
 
 def lambda_handler(event, context):
@@ -31,7 +30,7 @@ def lambda_handler(event, context):
     model = pickle.load(open(model_path, "rb"))
     
     features = event["features"]
-    prediction = model.predict(np.array(features).reshape([1, -1]))[0]
+    prediction = model.predict([features])[0]
     
 
     return {
@@ -43,8 +42,8 @@ def lambda_handler(event, context):
         ),
     }
 
-# if __name__ == '__main__':
-#     print("os.getcwd():", os.getcwd())
-#     with open('events/event.json') as f:
-#         data = json.load(f)
-#     print(lambda_handler(data, {}))
+if __name__ == '__main__':
+    print("os.getcwd():", os.getcwd())
+    with open('events/event.json') as f:
+        data = json.load(f)
+    print(lambda_handler(data, {}))
