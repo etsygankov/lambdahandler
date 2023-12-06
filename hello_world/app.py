@@ -45,6 +45,6 @@ def lambda_handler(event, context):
 
 # if __name__ == '__main__':
 #     print("os.getcwd():", os.getcwd())
-#     with open('lambda-python3.11/events/event.json') as f:
+#     with open('events/event.json') as f:
 #         data = json.load(f)
 #     print(lambda_handler(data, {}))
